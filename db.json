@@ -1,0 +1,25 @@
+{
+  "daftarBuku": [
+    {
+      "judul": "Si Kancil",
+      "deskripsi": "Cerita Rakyat Si Kancil",
+      "pengarang": "Yudhistira",
+      "tahunTerbit": "2022-11-29",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "judul": "Keong Mas",
+      "deskripsi": "Cerita Rakyat Keong Mas",
+      "tahunTerbit": "2000",
+      "pengarang": "Tere Liye"
+    },
+    {
+      "judul": "Harry Pottera",
+      "deskripsi": "Harry Potter Ynag Mengisahkan Sekolah Sihir",
+      "pengarang": "Sam Smith",
+      "tahunTerbit": "2002-02-06",
+      "id": 3
+    }
+  ]
+}

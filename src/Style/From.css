@@ -1,0 +1,9 @@
+form {
+    text-align: left;
+    border: 1px solid black;
+    padding: 1%;
+    padding-left: 5%;
+}
+.input {
+    margin-bottom: 5px;
+}
