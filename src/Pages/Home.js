@@ -45,7 +45,7 @@ export default function Home() {
       }
     })
     getAll();
-    window.location.reload();
+    // window.location.reload();
   };
   return (
     <div className="container my-5">

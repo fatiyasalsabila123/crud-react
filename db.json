@@ -15,11 +15,18 @@
       "id": 2
     },
     {
-      "judul": "Harry Pottera",
-      "deskripsi": "Harry Potter Ynag Mengisahkan Sekolah Sihir",
-      "pengarang": "Sam Smith",
-      "tahunTerbit": "2002-02-06",
+      "judul": "harry potter",
+      "deskripsi": "menceritakan sihir",
+      "pengarang": "yntkts",
+      "tahunTerbit": "2022-11-17",
       "id": 3
+    },
+    {
+      "judul": "asa",
+      "deskripsi": "asas",
+      "pengarang": "asas",
+      "tahunTerbit": "2022-12-22",
+      "id": 4
     }
   ]
 }

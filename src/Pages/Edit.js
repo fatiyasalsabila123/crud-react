@@ -54,7 +54,7 @@ const Edit = () => {
         )
         history.push("/");
         //untuk mereload
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((error) => {
         alert("Terjadi Kesalahan " + error);
