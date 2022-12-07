@@ -47,14 +47,15 @@ const Edit = () => {
         tahunTerbit: tahunTerbit,
       })
       .then(() => {
-        Swal.fire(
-          ' apakah yakin di edit datanya ?',
-          'You clicked the button!',
-          'success'
-        )
-        history.push("/");
-        //untuk mereload
-        // window.location.reload();
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          showConfirmButton: false,
+        })
+        history.push("/")
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
       })
       .catch((error) => {
         alert("Terjadi Kesalahan " + error);

@@ -3,6 +3,7 @@ import './App.css';
 import Navigation from './Component/Navigation';
 import Home from './Pages/Home';
 import Edit from './Pages/Edit';
+import Login from './Pages/Login';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Switch>
               <Route path="/" component={Home} exact/>
                 <Route path="/edit/:id" component={Edit} exact/>
+                <Route path="/login" component={Login} exact/>
             </Switch>
           </main>
         </BrowserRouter>

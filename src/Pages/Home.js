@@ -38,10 +38,11 @@ export default function Home() {
       if (result.isConfirmed) {
         axios.delete("http://localhost:8000/daftarBuku/" + id);
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        window.location.reload();
       }
     });
     getAll();
-    // window.location.reload();
+    
   };
   return (
     <div className="container my-5">
@@ -53,7 +54,7 @@ export default function Home() {
             <th>Deskripsi</th>
             <th>Tahun Terbit</th>
             <th>Pengarang</th>
-            <th>Action</th>
+            {localStorage.getItem("id") !== null ? <th>Action</th> : <></>}
           </tr>
         </thead>
         <tbody>
@@ -66,40 +67,44 @@ export default function Home() {
                 <td>{book.deskripsi}</td>
                 <td>{book.tahunTerbit}</td>
                 <td>{book.pengarang}</td>
-                <td className="action">
-                  <a href={"/edit/" + book.id}>
+                {localStorage.getItem("id") !== null ? (
+                  <td className="action">
+                    <a href={"/edit/" + book.id}>
+                      <button
+                        variant="warning"
+                        className="mx-1"
+                        style={{
+                          backgroundColor: "orange",
+                          color: "white",
+                          border: "none",
+                          padding: "5%",
+                          paddingLeft: "10%",
+                          paddingRight: "10%",
+                          borderRadius: "5px",
+                        }}
+                      >
+                        Edit
+                      </button>
+                    </a>
+                    ||
                     <button
-                      variant="warning"
+                      variant="danger"
                       className="mx-1"
                       style={{
-                        backgroundColor: "orange",
+                        backgroundColor: "red",
                         color: "white",
-                        border: "none",
                         padding: "5%",
-                        paddingLeft: "10%",
-                        paddingRight: "10%",
+                        border: "none",
                         borderRadius: "5px",
                       }}
+                      onClick={() => deleteUser(book.id)}
                     >
-                      Edit
+                      Delete
                     </button>
-                  </a>
-                  ||
-                  <button
-                    variant="danger"
-                    className="mx-1"
-                    style={{
-                      backgroundColor: "red",
-                      color: "white",
-                      padding: "5%",
-                      border: "none",
-                      borderRadius: "5px",
-                    }}
-                    onClick={() => deleteUser(book.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+                  </td>
+                ) : (
+                  <></>
+                )}
               </tr>
             );
           })}
