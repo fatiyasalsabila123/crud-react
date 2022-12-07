@@ -27,9 +27,23 @@ export default function Home() {
   // Axios Untuk melakukan request GET
   const deleteUser = async (id) => {
     axios.delete("http://localhost:8000/daftarBuku/" + id);
-    Swal.fire(
-      'apakah anda yakin untuk menghapus'
-    )
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
     getAll();
     window.location.reload();
   };

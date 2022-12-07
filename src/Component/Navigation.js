@@ -21,6 +21,7 @@ function Navigation() {
 
   // Async — await adalah salah satu fitur baru dari javascript yang di gunakan untuk menangani hasil dari sebuah promise
   const addUser = async (e) => {
+    // agar tidak reload tetapi berlaku hanya 1 file
     e.preventDefault();
 
     const data = {
