@@ -2,11 +2,13 @@ import axios from "axios";
 import React, {useState, useEffect} from "react";
 import { Button } from "react-bootstrap";
 import "../Style/Home.css"
+import Swal from "sweetalert2";
 
 export default function Home() {
   const [buku, setBuku] = useState([]);
 
   const getAll = () => {
+    // Axios Untuk melakukan request GET
     axios
       .get("http://localhost:8000/daftarBuku")
       .then((res) => {
@@ -17,13 +19,17 @@ export default function Home() {
       });
   };
 
+  //useEffect digunakan untuk menambahkan side effect ke function komponen
   useEffect(() => {
     getAll();
   }, []);
 
+  // Axios Untuk melakukan request GET
   const deleteUser = async (id) => {
     axios.delete("http://localhost:8000/daftarBuku/" + id);
-    alert("User Berhasil Dihapus ges.");
+    Swal.fire(
+      'apakah anda yakin untuk menghapus'
+    )
     getAll();
     window.location.reload();
   };
@@ -41,6 +47,7 @@ export default function Home() {
           </tr>
         </thead>
         <tbody>
+          {/* //Map adalah kumpulan elemen di mana setiap elemen disimpan sebagai kunci/untuk proses looping data  */}
           {buku.map((book, index) => {
             return (
               <tr key={book.id}>

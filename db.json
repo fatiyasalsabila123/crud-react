@@ -8,11 +8,11 @@
       "id": 1
     },
     {
-      "id": 2,
       "judul": "Keong Mas",
       "deskripsi": "Cerita Rakyat Keong Mas",
-      "tahunTerbit": "2000",
-      "pengarang": "Tere Liye"
+      "pengarang": "Tere Liye",
+      "tahunTerbit": "2022-12-06",
+      "id": 2
     },
     {
       "judul": "Harry Pottera",

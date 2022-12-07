@@ -4,9 +4,11 @@ import { InputGroup, Form } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 import { useEffect} from "react";
 import "../Style/Edit.css"
+import Swal from "sweetalert2";
 
 
 const Edit = () => {
+  //const adalah singkatan dari constant, yang berarti data dari variabel tidak boleh berubah dan harus selalu konstan.
   const param = useParams();
   const [judul, setJudul] = useState("");
   const [deskripsi, setDeskripsi] = useState("");
@@ -15,8 +17,10 @@ const Edit = () => {
 
   const history = useHistory();
 
+  //useEffect digunakan untuk menambahkan side effect ke function komponen
   useEffect(() => {
     axios
+    //get untuk menampilkan data
       .get("http://localhost:8000/daftarBuku/" + param.id)
       .then((response) => {
         const newBook = response.data;
@@ -31,9 +35,11 @@ const Edit = () => {
   }, []);
 
   const submitActionHandler = async (event) => {
+    // sebuah method yang berfungsi untuk mencegah terjadinya event bawaan dari sebuah DOM
     event.preventDefault();
 
     await axios
+    //mengedit data
       .put("http://localhost:8000/daftarBuku/" + param.id, {
         judul: judul,
         deskripsi: deskripsi,
@@ -41,8 +47,13 @@ const Edit = () => {
         tahunTerbit: tahunTerbit,
       })
       .then(() => {
-        alert("Berhasil Mengubah Data User Ygy");
+        Swal.fire(
+          'Succes',
+          'You clicked the button!',
+          'success'
+        )
         history.push("/");
+        //untuk mereload
         window.location.reload();
       })
       .catch((error) => {

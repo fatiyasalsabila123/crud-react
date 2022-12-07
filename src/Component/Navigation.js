@@ -7,6 +7,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Modal, Form, Button } from "react-bootstrap";
 import { InputGroup } from "react-bootstrap";
 import "../Style/Navigation.css"
+import Swal from "sweetalert2";
 
 function Navigation() {
   const [show, setShow] = useState(false);
@@ -18,6 +19,7 @@ function Navigation() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // Async — await adalah salah satu fitur baru dari javascript yang di gunakan untuk menangani hasil dari sebuah promise
   const addUser = async (e) => {
     e.preventDefault();
 
@@ -27,9 +29,14 @@ function Navigation() {
       pengarang: pengarang,
       tahunTerbit: tahunTerbit,
     };
-
+    // Axios Untuk melakukan request GET
     await axios
-      .post("http://localhost:8000/daftarBuku", data)
+      .post("http://localhost:8000/daftarBuku", data);
+      Swal.fire(
+        'Succes!',
+        'You clicked the button!',
+        'success'
+      )
       .then(() => {
         window.location.reload();
       })
@@ -75,7 +82,8 @@ function Navigation() {
                     <Form.Label>
                         <strong>Judul</strong>
                     </Form.Label>
-                    <InputGroup className= "d-flex gap-3">
+                    <InputGroup className= "d-flex gap-3">                                           
+                    {/* //value = nilai yang di inputkan */}
                         <Form.Control placeholder="Masukan Judul" value={judul} onChange={(e) => setJudul(e.target.value)} required></Form.Control>
                     </InputGroup>
                 </div>
@@ -83,7 +91,7 @@ function Navigation() {
                     <Form.Label>
                         <strong>Deskripsi</strong>
                     </Form.Label>
-                    <InputGroup className="d-flex gap-3">
+                    <InputGroup className="d-flex gap-3">                                             
                         <Form.Control placeholder="Masukan Deskripsi" value={deskripsi} onChange={(e) => setDeskripsi(e.target.value)} required></Form.Control>
                     </InputGroup>
                 </div>
