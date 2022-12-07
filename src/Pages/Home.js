@@ -38,7 +38,9 @@ export default function Home() {
       if (result.isConfirmed) {
         axios.delete("http://localhost:8000/daftarBuku/" + id);
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       }
     });
     getAll();
