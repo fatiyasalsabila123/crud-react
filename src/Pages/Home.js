@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import "../Style/Home.css"
+import "../Style/Home.css";
 import Swal from "sweetalert2";
 
 export default function Home() {
@@ -26,24 +26,20 @@ export default function Home() {
 
   // Axios Untuk melakukan request GET
   const deleteUser = async (id) => {
-    axios.delete("http://localhost:8000/daftarBuku/" + id);
     Swal.fire({
-      title: 'Are you sure?',
+      title: " apakah yakin data mau di delete?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        axios.delete("http://localhost:8000/daftarBuku/" + id);
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
       }
-    })
+    });
     getAll();
     // window.location.reload();
   };
@@ -72,14 +68,33 @@ export default function Home() {
                 <td>{book.pengarang}</td>
                 <td className="action">
                   <a href={"/edit/" + book.id}>
-                    <button variant="warning" className="mx-1" style={{backgroundColor: "orange", color : "white", border:"none", padding: "5%", paddingLeft:"10%", paddingRight: "10%", borderRadius: "5px"}}>
+                    <button
+                      variant="warning"
+                      className="mx-1"
+                      style={{
+                        backgroundColor: "orange",
+                        color: "white",
+                        border: "none",
+                        padding: "5%",
+                        paddingLeft: "10%",
+                        paddingRight: "10%",
+                        borderRadius: "5px",
+                      }}
+                    >
                       Edit
                     </button>
                   </a>
                   ||
                   <button
                     variant="danger"
-                    className="mx-1" style={{backgroundColor:"red", color: "white", padding: "5%", border:"none", borderRadius: "5px"}}
+                    className="mx-1"
+                    style={{
+                      backgroundColor: "red",
+                      color: "white",
+                      padding: "5%",
+                      border: "none",
+                      borderRadius: "5px",
+                    }}
                     onClick={() => deleteUser(book.id)}
                   >
                     Delete

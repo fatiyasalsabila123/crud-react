@@ -48,7 +48,7 @@ const Edit = () => {
       })
       .then(() => {
         Swal.fire(
-          'Succes',
+          ' apakah yakin di edit datanya ?',
           'You clicked the button!',
           'success'
         )
